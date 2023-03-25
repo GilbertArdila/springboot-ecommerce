@@ -27,29 +27,32 @@ public class ProductServiceImpl implements IproductService {
         return repository.findById(id);
     }
 
-    @Override
+
     public Product update(Product newData, Long id) {
         if(repository.findById(id).isPresent()){
-          Product actual = new Product();
-         if(newData.getName() != null){
-             actual.setName(newData.getName());
-         }
-         if(newData.getPrice() != null){
-             actual.setPrice(newData.getPrice());
-         }
-            if(newData.getDescription() != null){
-                actual.setDescription(newData.getDescription());
-            }
-            if(newData.getDetails()!= null){
-                actual.setDetails(newData.getDetails());
-            }
-            if(newData.getImage()!= null){
-                actual.setImage(newData.getImage());
-            }
-            if(newData.getQuantity()!= null){
-                actual.setQuantity(newData.getQuantity());
-            }
-            return repository.save(actual);
+          Optional<Product> actualData = this.fidnById(id);
+          actualData.map(actual->{
+              if(newData.getName() != null){
+                  actual.setName(newData.getName());
+              }
+              if(newData.getPrice() != null){
+                  actual.setPrice(newData.getPrice());
+              }
+              if(newData.getDescription() != null){
+                  actual.setDescription(newData.getDescription());
+              }
+              if(newData.getDetails()!= null){
+                  actual.setDetails(newData.getDetails());
+              }
+              if(newData.getImage()!= null){
+                  actual.setImage(newData.getImage());
+              }
+              if(newData.getQuantity()!= null){
+                  actual.setQuantity(newData.getQuantity());
+              }
+              return repository.save(actual);
+          });
+
 
         }
         return null;

@@ -32,30 +32,32 @@ public class OrderServiceImpl implements IorderService {
         return null;
     }
 
-    @Override
+
     public Order update(Order newData, Long id) {
         if(repository.findById(id).isPresent()){
-            Order actual = new Order();
+            Optional<Order> actualData = this.repository.findById(id);
+           actualData.map(actual->{
+               if(newData.getUser() != null){
+                   actual.setUser(newData.getUser());
+               }
+               if(newData.getDetails() != null){
+                   actual.setDetails(newData.getDetails());
+               }
+               if(newData.getNumber() != null){
+                   actual.setNumber(newData.getNumber());
+               }
+               if(newData.getCreatedAt() != null){
+                   actual.setCreatedAt(newData.getCreatedAt());
+               }
+               if(newData.getGotAt() != null){
+                   actual.setGotAt(newData.getGotAt());
+               }
+               if(newData.getTotal() != null){
+                   actual.setTotal(newData.getTotal());
+               }
+               return repository.save(actual);
+           });
 
-            if(newData.getUser() != null){
-                actual.setUser(newData.getUser());
-            }
-            if(newData.getDetails() != null){
-                actual.setDetails(newData.getDetails());
-            }
-            if(newData.getNumber() != null){
-                actual.setNumber(newData.getNumber());
-            }
-            if(newData.getCreatedAt() != null){
-                actual.setCreatedAt(newData.getCreatedAt());
-            }
-            if(newData.getGotAt() != null){
-                actual.setGotAt(newData.getGotAt());
-            }
-            if(newData.getTotal() != null){
-                actual.setTotal(newData.getTotal());
-            }
-            return repository.save(actual);
         }
         return null;
     }

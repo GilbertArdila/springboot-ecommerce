@@ -11,7 +11,7 @@ public interface IproductService {
 
    Optional<Product> fidnById(Long id);
 
-   Product update(Product newData,Long id);
+
 
     void delete(Long id);
 }

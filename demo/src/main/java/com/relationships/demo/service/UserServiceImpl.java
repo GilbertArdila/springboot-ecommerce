@@ -32,32 +32,36 @@ public class UserServiceImpl implements IuserService {
         return null;
     }
 
-    @Override
+
     public User update(User newData, Long id) {
-        if(repository.findById(id).isPresent()){
-            User actual = new User();
-            if(newData.getName() != null){
-                actual.setName(newData.getName());
-            }
-            if(newData.getAddress() != null){
-                actual.setAddress(newData.getAddress());
-            }
-            if(newData.getEmail() != null){
-                actual.setEmail(newData.getEmail());
-            }
-            if(newData.getPassword() != null){
-                actual.setPassword(newData.getPassword());
-            }
-            if(newData.getPhone() != null){
-                actual.setPhone(newData.getPhone());
-            }
-            if(newData.getUserName() != null){
-                actual.setUserName(newData.getUserName());
-            }
-            if(newData.getType() != null){
-                actual.setType(newData.getType());
-            }
-            return repository.save(actual);
+        if(this.repository.findById(id).isPresent()){
+            Optional<User> actualData= this.fidnById(id);
+
+            actualData.map(actual ->{
+                if (newData.getName() != null){
+                    actual.setName(newData.getName());
+                }
+                if (newData.getUserName() != null){
+                    actual.setUserName(newData.getUserName());
+                }
+                if (newData.getPassword() != null){
+                    actual.setPassword(newData.getPassword());
+                }
+                if (newData.getEmail() != null){
+                    actual.setEmail(newData.getEmail());
+                }
+                if (newData.getPhone() != null){
+                    actual.setPhone(newData.getPhone());
+                }
+                if (newData.getAddress() != null){
+                    actual.setAddress(newData.getAddress());
+                }
+                if (newData.getType() != null){
+                    actual.setType(newData.getType());
+                }
+
+                return repository.save(actual);
+            });
         }
         return null;
     }

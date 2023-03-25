@@ -10,7 +10,7 @@ public interface IuserService {
 
    Optional<User> fidnById(Long id);
 
-   User update(User newData,Long id);
+
 
     void delete(Long id);
 }

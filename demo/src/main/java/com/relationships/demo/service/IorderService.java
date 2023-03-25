@@ -11,7 +11,7 @@ public interface IorderService {
 
    Optional<Order> fidnById(Long id);
 
-   Order update(Order newData,Long id);
+
 
     void delete(Long id);
 }
