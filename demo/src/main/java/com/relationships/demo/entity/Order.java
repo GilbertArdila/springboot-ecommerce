@@ -10,16 +10,15 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     @Column(nullable = false)
-
     private String number;
 
     private LocalDate createdAt;
     private LocalDate gotAt;
     private Double total;
 
+    /************************************************************************************************************/
 
     /*
     nos crea un campo user_id en esta tabla
@@ -32,14 +31,13 @@ public class Order {
    lo mapeamos al campo order de la tabla OrderDetail
    en donde está definida la relación
    con esta tabla
-   nos crea un campo detail_id en esta tabla
-    de manera automatica
     */
-  @OneToMany(mappedBy = "order")
-  private List<OrderDetail> details;
+    @OneToMany(mappedBy = "order")
+    private List<OrderDetail> details;
+
+    /************************************************************************************************************/
 
     //Constructor
-
     public Order() {
     }
 
@@ -53,8 +51,9 @@ public class Order {
         this.details = details;
     }
 
-    //Getters ans Setters
+    /************************************************************************************************************/
 
+    //Getters ans Setters
     public User getUser() {
         return user;
     }

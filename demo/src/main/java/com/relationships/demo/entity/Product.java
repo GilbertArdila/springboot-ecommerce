@@ -10,24 +10,19 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     @Column(nullable = false)
-
     private String name;
     @Column(nullable = false)
-
     private String description;
     @Column(nullable = false)
-
     private String image;
     @Column(nullable = false)
-
     private Double price;
     @Column(nullable = false)
     @Size(min = 1)
     private Integer quantity;
-
+    /************************************************************************************************************/
     /*
     nos crea un campo user_id en esta tabla
     de manera automatica
@@ -43,8 +38,9 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> details;
 
-    //Constructors
+    /************************************************************************************************************/
 
+    //Constructors
     public Product() {
     }
 
@@ -59,10 +55,9 @@ public class Product {
         this.details = details;
     }
 
+    /************************************************************************************************************/
 
     //Getters and Setters
-
-
     public List<OrderDetail> getDetails() {
         return details;
     }

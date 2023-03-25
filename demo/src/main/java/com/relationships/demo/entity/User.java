@@ -17,23 +17,19 @@ public class User {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false, name = "user_name")
-
     private String userName;
     @Column(nullable = false, unique = true)
-
     private String email;
     @Column(nullable = false)
-
     private String address;
     @Column(nullable = false)
-
     private String phone;
     @Column(nullable = false)
-
     private String type;
     @Column(nullable = false)
     @Size(min = 4, max = 8)
     private String password;
+    /************************************************************************************************************/
 
     /*
     lo mapeamos al campo user de la tabla Product
@@ -50,8 +46,10 @@ public class User {
      */
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
-    //Constructors
 
+    /************************************************************************************************************/
+
+    //Constructors
     public User() {
     }
 
@@ -71,8 +69,10 @@ public class User {
         this.orders = orders;
     }
 
-    //Getters and Setters
+    /************************************************************************************************************/
 
+
+    //Getters and Setters
     public List<Order> getOrders() {
         return orders;
     }

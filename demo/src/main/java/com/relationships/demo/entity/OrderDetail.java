@@ -7,17 +7,15 @@ import javax.persistence.*;
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     @Column(nullable = false)
-
     private String name;
     @Column(nullable = false)
-
     private Double quantity;
 
     private Double price;
     private Double total;
+    /************************************************************************************************************/
 
     /*
     nos crea un campo product_id en esta tabla
@@ -27,16 +25,15 @@ public class OrderDetail {
     private Product product;
 
     /*
-    lo mapeamos al campo order de la tabla OrderDetail
-   en donde está definida la relación
-   con esta tabla
     nos crea un campo order_id en esta tabla
     de manera automatica
      */
     @ManyToOne
     private Order order;
-    //Constructors
 
+    /************************************************************************************************************/
+
+    //Constructors
     public OrderDetail() {
     }
 
@@ -49,8 +46,10 @@ public class OrderDetail {
         this.product = product;
         this.order = order;
     }
-//Getters and Setters
 
+    /************************************************************************************************************/
+
+//Getters and Setters
     public Product getProduct() {
         return product;
     }
